@@ -6,6 +6,7 @@ namespace Zhil\UdpNotifierBundle\Services;
 class UdpNotifier
 {
     private $serverConfigs = [];
+    private $debug = false;
     private $servers = [];
 
     public function __construct()
@@ -15,6 +16,7 @@ class UdpNotifier
     public function setConfig($config)
     {
         $this->serverConfigs = $config["servers"];
+        $this->debug = $config["debug"];
     }
 
     public function sendNotification($name,$data)
