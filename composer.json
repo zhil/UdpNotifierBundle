@@ -16,7 +16,8 @@
     }
   ],
   "require": {
-    "symfony/framework-bundle": "~2.1|~3.0"
+    "symfony/framework-bundle": "~2.1|~3.0",
+    "zhil/UdpNotifier": "*"
   },
   "autoload": {
     "psr-4": {

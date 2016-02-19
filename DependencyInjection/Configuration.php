@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('ip')->isRequired()->end()
                                 ->integerNode('port')->isRequired()->end()
                                 ->scalarNode('secret')->isRequired()->end()
+                                ->scalarNode('handle')->end()
                             ->end()
                         ->end()
                     ->end()

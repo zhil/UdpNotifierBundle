@@ -1,0 +1,4 @@
+services:
+  zhil.udp_notifier:
+    class: Zhil\UdpNotifierBundle\Services\UdpNotifier
+    arguments: []
