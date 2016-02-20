@@ -1,7 +1,7 @@
 <?php
 namespace Zhil\UdpNotifierBundle\Services;
 
-//use UdpNotifier
+use Zhil\UdpNotifier\Notifier;
 
 class UdpNotifier
 {
@@ -21,20 +21,23 @@ class UdpNotifier
 
     public function sendNotification($name,$data)
     {
-        foreach($this->getServers() as $serverInfo) {
-
+        foreach($this->getServers() as $notifier) {
+            $notifier->notification($name,$data);
         }
     }
 
+    /**
+     * @return Notifier[]
+     */
     private function getServers()
     {
-        if(count($this->servers)) {
-            return $this->servers;
-        }
-        foreach($this->serverConfigs as $config) {
-            if($config["enabled"]) {
-//                $this->servers[] = new UdpNotifier()
+        if(!count($this->servers)) {
+            foreach ($this->serverConfigs as $config) {
+                if ($config["enabled"]) {
+                    $this->servers[] = new Notifier($config["ip"], $config["port"], $config["secret"]);
+                }
             }
         }
+        return $this->servers;
     }
 }
